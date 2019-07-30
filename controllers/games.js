@@ -11,18 +11,14 @@ module.exports = {
 
   getById (req, res) {
     return Game
-      .findOne({
-        where: {
-          id: req.params.id
-        }
-      })
+      .sequelize.query('SELECT g.id, g.name, g.description, g.genre, g.multiplayer, g.imagePath, g.price, MIN(oi.price) as min_price, MAX(oi.price) as max_price, AVG(oi.price) as average_price, SUM(oi.price) as sum_price, COUNT(oi.id) as amount FROM Games g inner join OrderItems oi on g.id = oi.gameId WHERE oi.gameId = ' + req.params.id)
       .then((game) => {
         if (!game) {
           return res.status(404).send({
             message: 'Game Not Found',
           });
         }
-        return res.status(200).send(game);
+        return res.status(200).send(game[0]);
       })
       .catch((error) => res.status(400).send(error));
   },

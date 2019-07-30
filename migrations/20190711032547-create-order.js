@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Orders', {
@@ -8,13 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      player_ip: {
+      playerIp: {
         type: Sequelize.STRING
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.ENUM('OPENED', 'PEDING', 'CLOSED')
       },
-      player_id: {
+      playerId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

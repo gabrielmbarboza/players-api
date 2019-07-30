@@ -1,10 +1,15 @@
 
 const Player = require('../models').Player;
+const Order = require('../models').Order;
 
 module.exports = {
   list (req, res) {
     return Player
-      .findAll()
+      .findAll({
+        include:[
+          {model: Order}
+        ]
+      })
       .then((players) => res.status(200).send(players))
       .catch((error) => { res.status(400).send(error); });
   },
@@ -14,7 +19,10 @@ module.exports = {
       .findOne({
         where: {
           id: req.params.id
-        }
+        },
+        include: [
+          { model: Order }
+        ]
       })
       .then((player) => {
         if (!player) {
@@ -85,4 +93,16 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
+
+  orders (req, res) {
+    return Order
+      .findAll({
+        where: {
+          playerId: req.params.id
+        }
+      })
+      .then((orders) => res.status(200).send(orders))
+      .catch((error) => { res.status(400).send(error); 
+      });
+  }
 };

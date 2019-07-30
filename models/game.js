@@ -5,11 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     genre: DataTypes.STRING,
     multiplayer: DataTypes.BOOLEAN,
-    image_path: DataTypes.STRING,
-    price: DataTypes.FLOAT
+    imagePath: DataTypes.STRING,
+    price: DataTypes.FLOAT,
   }, {});
   Game.associate = function(models) {
-    // associations can be defined here
+    Game.hasMany(models.OrderItem, { foreingKey: 'orderItemId' });
   };
   return Game;
 };

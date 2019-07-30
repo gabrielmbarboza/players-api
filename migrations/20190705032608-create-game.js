@@ -20,7 +20,7 @@ module.exports = {
       multiplayer: {
         type: Sequelize.BOOLEAN
       },
-      image_path: {
+      imagePath: {
         type: Sequelize.STRING
       },
       price: {

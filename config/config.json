@@ -1,16 +1,16 @@
 {
   "development": {
-    "username": "postgres",
-    "password": null,
+    "username": "root",
+    "password": "root",
     "database": "players_api",
     "host": "127.0.0.1",
-    "dialect": "postgres",
+    "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
     "username": "postgres",
-    "password": null,
-    "database": "database_test",
+    "password": "bogo123",
+    "database": "players_api_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false

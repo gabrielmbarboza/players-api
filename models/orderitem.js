@@ -2,11 +2,18 @@
 module.exports = (sequelize, DataTypes) => {
   const OrderItem = sequelize.define('OrderItem', {
     price: DataTypes.FLOAT,
-    order_id: DataTypes.INTEGER,
-    game_id: DataTypes.INTEGER
-  }, {});
+    orderId: DataTypes.INTEGER,
+    gameId: DataTypes.INTEGER,
+  }, {
+    hooks: {
+      beforeCreate: (item, options) => {
+        console.log(JSON.stringify(item))
+      }
+    }
+  });
   OrderItem.associate = function(models) {
-    // associations can be defined here
+    OrderItem.belongsTo(models.Order);
+    OrderItem.belongsTo(models.Game);
   };
   return OrderItem;
 };

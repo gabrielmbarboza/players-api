@@ -7,7 +7,18 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {});
   Player.associate = function(models) {
-    // associations can be defined here
+   Player.hasMany(models.Order);
   };
+  Player.hasGames = function(id, items) {
+    var gameIds = [];
+    console.log(JSON.stringify(items))
+    /*for(var i = 0; i < items[0].length; i++) {
+    
+    }*/
+    return "O metodo existe <<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+   /* Player
+      .sequelize
+      .query("select ")*/
+  }
   return Player;
 };

@@ -11,10 +11,10 @@ module.exports = {
       price: {
         type: Sequelize.FLOAT
       },
-      order_id: {
+      orderId: {
         type: Sequelize.INTEGER
       },
-      game_id: {
+      gameId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
